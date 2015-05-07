@@ -49,6 +49,12 @@ mod2<-neuralnet(form.in,data=training_set,hidden= c(10), linear.output = FALSE, 
 
 plot(mod2)
 
+
+prediction <- compute(mod2, test_set[,3:11, with = FALSE])
+
+test_set$prediction <- prediction
+
+
 result_name <- as.data.frame(cbind(countries, as.vector(mod2$net.result[[1]])))
 result_name$V2 <- as.numeric(as.character(result_name$V2))
 
